@@ -17,6 +17,7 @@ import concurrent.futures
 try:
     if sys.argv[1] and os.path.exists(sys.argv[1]):
         ROOT_PATH = sys.argv[1]
+        print('Root path for downloaded streams: ' + ROOT_PATH)
     else:
         print('destination path does not exist')
         sys.exit()
