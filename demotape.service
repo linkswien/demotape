@@ -1,0 +1,13 @@
+[Unit]
+Description=checks regulary the webstreams of all district parlaments in vienna. Online streams get taped.
+After=multi-user.target
+
+[Service]
+Type=idle
+User=pi
+ExecStart=/usr/bin/python3 /path/to/demotape.py > /var/log/demotape.log 2>&1
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
