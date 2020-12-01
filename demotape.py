@@ -18,15 +18,12 @@ try:
     if sys.argv[1] and os.path.exists(sys.argv[1]):
         ROOT_PATH = sys.argv[1]
         print('Root path for downloaded streams: ' + ROOT_PATH)
-        sys.stdout.flush()
     else:
         print('destination path does not exist')
-        sys.stdout.flush()
         sys.exit()
 except IndexError:
     print('Script needs a valid destination path for recorded videos as argument')
     print('For example: \ndemotape.py /path/to/videos')
-    sys.stdout.flush()
     sys.exit()
 
 
@@ -60,7 +57,6 @@ def check_stream(url):
             return False
     except (ValueError, KeyError):
         print('some connection error or so')
-        sys.stdout.flush()
 
 
 
@@ -68,24 +64,19 @@ class MyLogger(object):
     def debug(self, msg):
         #pass
         print(msg)
-        sys.stdout.flush()
-
 
     def warning(self, msg):
         #pass
         print(msg)
-        sys.stdout.flush()
 
     def error(self, msg):
         print(msg)
-        sys.stdout.flush()
 
 
 def my_ytdl_hook(d):
     if d['status'] == 'finished':
         print('Done downloading!')
         print(d)
-        sys.stdout.flush()
 
 
 def download_stream(channel):
@@ -127,17 +118,14 @@ def process_channel(channel):
         #print('checking ' + channel['name'])
         if check_stream(channel['url']):
             print(channel['name'] + ': found stream! Downloading ...')
-            sys.stdout.flush()
             download_stream(channel)
         else:
             print(channel['name'] + ': no stream')
-            sys.stdout.flush()
             # wait between checks
             waitingtime = random.randint(20,30)
             time.sleep(waitingtime)
 
     print('end processing ' + channel['name'] + ' ... (shouldn\'t happen!)')
-    sys.stdout.flush()
 
 
 
@@ -159,7 +147,6 @@ def main():
 
 
     print('end main (this shouldn\'t happen!)')
-    sys.stdout.flush()
 
 
 main()
