@@ -117,10 +117,10 @@ def process_channel(channel):
     while True:
         #print('checking ' + channel['name'])
         if check_stream(channel['url']):
-            print(channel['name'] + ': found stream! Downloading ...')
+            print(channel['name'] + ': stream online! Downloading ...')
             download_stream(channel)
         else:
-            print(channel['name'] + ': no stream')
+            # print(channel['name'] + ': stream offline')
             # wait between checks
             waitingtime = random.randint(20,30)
             time.sleep(waitingtime)

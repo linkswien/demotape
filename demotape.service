@@ -1,11 +1,14 @@
 [Unit]
-Description=checks regulary the webstreams of all district parlaments in vienna. Online streams get taped.
+Description=Demotape - Automatic stream taping for viennese district parlaments.
 After=multi-user.target
 
 [Service]
-Type=idle
-User=pi
-ExecStart=/usr/bin/python3 /path/to/demotape.py > /var/log/demotape.log 2>&1
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 -u /home/demotape/demotape/demotape.py /var/www/static-files/
+StandardOutput=file:/var/log/demotape.log 
+StandardError=file:/var/log/demotape_error.log
+
 Restart=always
 RestartSec=10
 
