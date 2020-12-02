@@ -83,7 +83,7 @@ def download_stream(channel):
     now = datetime.now() # current date and time
 
     dest_dir = ROOT_PATH + '/' + channel['name'] +'/'
-    dest_filename = now.strftime("%Y-%m-%d--%H.%M.%S")
+    dest_filename = now.strftime("%Y-%m-%d--%H.%M.%S") + '.mp4'
 
     # create directory if it doesn't exist
     if not os.path.exists(dest_dir):
@@ -96,6 +96,7 @@ def download_stream(channel):
             'logger': MyLogger(),
             'outtmpl': dest,
             'format': 'bestaudio/best',
+            'recodevideo': 'mp4',
             'progress_hooks': [my_ytdl_hook],
         }
 
@@ -149,16 +150,15 @@ def main():
     print('end main (this shouldn\'t happen!)')
 
 
-# main()
+main()
 
 
 
 
 
 
-test_channel = {
-           'name': 'Test Channel', 
-           'url': 'https://1000338copo-app2749759488.r53.cdn.tv1.eu/1000518lf/1000338copo/live/app2749759488/w2928771075/live247.smil/playlist.m3u8'
-       }
-
-download_stream(test_channel)
+#test_channel = {
+#           'name': 'Test Channel', 
+#           'url': 'https://1000338copo-app2749759488.r53.cdn.tv1.eu/1000518lf/1000338copo/live/app2749759488/w2928771075/live247.smil/playlist.m3u8'
+#       }
+#download_stream(test_channel)
