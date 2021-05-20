@@ -1,0 +1,4 @@
+webdav:
+  username: "username"
+  password: "password"
+  base_url: "cloud.example.com/remote.php/dav/files/username/some%20subdirectory/"
