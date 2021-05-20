@@ -13,8 +13,10 @@ import asyncio
 import concurrent.futures
 import ntpath
 import yaml
+from pathlib import Path
 
-with open(r'config.yaml') as file:
+config_path = Path(__file__).parent / './config.yaml'
+with config_path.open() as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
 
 try:
