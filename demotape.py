@@ -16,8 +16,11 @@ import yaml
 from pathlib import Path
 
 config_path = Path(__file__).parent / './config.yaml'
-with config_path.open() as file:
-    config = yaml.load(file, Loader=yaml.FullLoader)
+if config_path.exists():
+    with config_path.open() as file:
+        config = yaml.load(file, Loader=yaml.FullLoader)
+else:
+    config = None
 
 try:
     if sys.argv[1] and os.path.exists(sys.argv[1]):
@@ -136,7 +139,8 @@ def process_channel(channel):
             dest_path = get_destpath(channel) # dirctory + filename
             download_stream(channel, dest_path) # also converts video
             print(timestamp() + " Uploading video " + dest_path)
-            upload_video(dest_path)
+            if config is not None:
+                upload_video(dest_path)
         else:
             waitingtime = random.randint(50,60)
             time.sleep(waitingtime)
