@@ -1,0 +1,15 @@
+{
+  "name": "demotape-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bernhard Hayden",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "youtube-dl-exec": "^1.2.6"
+  }
+}
